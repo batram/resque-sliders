@@ -30,7 +30,7 @@ module Resque
           save_pid!
 
           @max_children = options[:max_children] || 10
-          @hostname = `hostname -s`.chomp.downcase
+          @hostname = options[:hostname] || `hostname -s`.chomp.downcase
           @pids = Hash.new # init pids array to track running children
           @need_queues = Array.new # keep track of pids that are needed
           @dead_queues = Array.new # keep track of pids that are dead
