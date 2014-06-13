@@ -49,11 +49,7 @@ module Resque
         # run the daemon
         def run!(interval=0.1)
           interval = Float(interval)
-          if running?
-            unless @hostile_takeover
-              puts "Already running. Restart Not Forced exiting..."
-              exit
-            end
+          if @hostile_takeover && running?
             restart_running!
           end
           $0 = "KEWatcher: Starting"
