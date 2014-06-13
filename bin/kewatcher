@@ -41,6 +41,10 @@ OptionParser.new do |opt|
     options[:verbosity] += 1
   end
 
+  opt.on("-n", "--name HOSTNAME", Integer, "Overwrite hostname") do |max|
+    options[:hostname] = max
+  end
+  
   opt.on("-m", "--max MAX", Integer, "Max Children (default: 10)") do |max|
     options[:max_children] = max
   end
